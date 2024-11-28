@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb87f0be0bb87248a803292ab924548, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  maxEnergy: 1000
+  energyPerClick: 1
+  autoClickCost: 1
+  energyRechargeAmount: 10
+  energyRechargeInterval: 10
+  currencyPrefab: {fileID: 4802870035932544535, guid: 8bf146be794b35149b05ebb1696dc66a, type: 3}
+  clickVFX: {fileID: 8393319517212694155, guid: 861dce730547bf4428bc149e92326af5, type: 3}
+  coinSound: {fileID: 8300000, guid: 0bd777ce05f1cc94b823d51dce3db602, type: 3}
+  currencyPerClick: 1
+  autoClickInterval: 3
