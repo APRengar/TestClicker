@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 public class QuitGame : MonoBehaviour
 {
-    private Button button;
+    private Button _button;
 
     private void Awake() 
     {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(QuitGameInitiate);
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(QuitGameInitiate);
     }
 
     public void QuitGameInitiate()

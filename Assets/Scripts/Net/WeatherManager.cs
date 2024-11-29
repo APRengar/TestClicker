@@ -12,12 +12,12 @@ using UnityEngine.UI;
 public class WeatherManager : MonoBehaviour
 {
     [SerializeField] private RequestQueue _requestQueue;
-    [SerializeField] private GameObject _weatherUI; // UI для отображения погоды
-    [SerializeField] private Image _weatherIcon; // Иконка погоды
-    [SerializeField] private TextMeshProUGUI _weatherText; // Текст погоды
+    [SerializeField] private GameObject _weatherUI; 
+    [SerializeField] private Image _weatherIcon; 
+    [SerializeField] private TextMeshProUGUI _weatherText; 
 
-    [SerializeField] private TMP_InputField emailInputField; // InputField для ввода email
-    [SerializeField] private TextMeshProUGUI feedbackText; // Поле для вывода сообщений
+    [SerializeField] private TMP_InputField emailInputField; 
+    [SerializeField] private TextMeshProUGUI feedbackText;
 
     private readonly string _apiUrl = "https://api.weather.gov/gridpoints/TOP/32,81/forecast";
     private bool _isUserOnClickerScreen = false; // Устанавливается, когда пользователь на экране кликера
@@ -60,7 +60,6 @@ public class WeatherManager : MonoBehaviour
         }
         using (HttpClient client = new HttpClient())
         {
-            // client.DefaultRequestHeaders.Add("User-Agent", "MyWeatherApp/1.0 (example@mail.ru)");
             client.DefaultRequestHeaders.Add("User-Agent", $"MyWeatherApp/1.0 ({emailInputField.text})");
             
             try
@@ -80,12 +79,12 @@ public class WeatherManager : MonoBehaviour
     {
         if (IsEmailValid(email))
         {
-            feedbackText.text = "Email корректен"; // Сообщение об успешной проверке
+            feedbackText.text = "Email корректен"; 
             feedbackText.color = Color.green;
         }
         else
         {
-            feedbackText.text = "Некорректный email!"; // Сообщение об ошибке
+            feedbackText.text = "Некорректный email!";
             feedbackText.color = Color.red;
         }
     }
@@ -99,7 +98,6 @@ public class WeatherManager : MonoBehaviour
 
     private void UpdateWeatherUI(WeatherResponse data)
     {
-        // Для простоты берем первый прогноз
         var todayForecast = data.properties.periods[0];
         _weatherText.text = $"Сегодня - {todayForecast.temperature}F";
         StartCoroutine(UpdateWeatherIcon(todayForecast.icon));

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource _audioSource;
-
     public AudioClip clickSound;
+
+    private AudioSource _audioSource;
 
     private void Awake()
     {

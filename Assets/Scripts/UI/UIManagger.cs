@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class UIManagger : MonoBehaviour
 {
-    [SerializeField] private TMP_Text currencyCounter;
-    [SerializeField] private TMP_Text energyCounter;
-    [SerializeField] Slider energySlider;
+    [SerializeField] private TMP_Text _currencyCounter;
+    [SerializeField] private TMP_Text _energyCounter;
+    [SerializeField] private Slider _energySlider;
 
     private GameManager _gameManager;
 
@@ -20,15 +20,15 @@ public class UIManagger : MonoBehaviour
         // Подписка на обновление валюты
         _gameManager.Currency.Subscribe(value =>
         {
-            currencyCounter.text = $"{value}";
+            _currencyCounter.text = $"{value}";
         }).AddTo(this);
 
         // Подписка на обновление энергии
         _gameManager.Energy.Subscribe(value =>
         {
-            energyCounter.text = $"{value}";
+            _energyCounter.text = $"{value}";
         }).AddTo(this);
 
-        _gameManager.Energy.Subscribe(value => energySlider.value = value).AddTo(this);
+        _gameManager.Energy.Subscribe(value => _energySlider.value = value).AddTo(this);
     }
 }

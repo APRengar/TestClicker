@@ -2,13 +2,11 @@ using UnityEngine;
 using TMPro;
 using Zenject;
 using UniRx;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text currencyText;
-    [SerializeField] private TMP_Text energyText;
-
+    [SerializeField] private TMP_Text _currencyText;
+    [SerializeField] private TMP_Text _energyText;
 
     private GameManager _gameManager;
 
@@ -20,8 +18,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _gameManager.Currency.Subscribe(value => currencyText.text = $"Currency: {value}").AddTo(this);
-        _gameManager.Energy.Subscribe(value => energyText.text = $"Energy: {value}").AddTo(this);
-
+        _gameManager.Currency.Subscribe(value => _currencyText.text = $"Currency: {value}").AddTo(this);
+        _gameManager.Energy.Subscribe(value => _energyText.text = $"Energy: {value}").AddTo(this);
     }
 }

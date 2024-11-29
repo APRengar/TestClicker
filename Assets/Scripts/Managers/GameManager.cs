@@ -5,26 +5,20 @@ using Cysharp.Threading.Tasks;
 
 public class GameManager : IInitializable
 {
+    public IReadOnlyReactiveProperty<int> Currency => _currency;
+    public IReadOnlyReactiveProperty<int> Energy => _energy;
+
     private readonly GameSetings _setings;
     private readonly AudioManager _audioManager;
 
     private readonly ReactiveProperty<int> _currency = new ReactiveProperty<int>(0);
     private readonly ReactiveProperty<int> _energy = new ReactiveProperty<int>(0);
-    // Используем Zenject для инъекции пула объектов
-    // private readonly CurrencyPopupPool _currencyPopupPool;
 
-    public IReadOnlyReactiveProperty<int> Currency => _currency;
-    public IReadOnlyReactiveProperty<int> Energy => _energy;
-
-    // [Inject] private SignalBus _signalBus;
-
-    // public GameManager(GameSetings settings, CurrencyPopupPool currencyPopupPool)
     [Inject]
     public GameManager(GameSetings settings, AudioManager audioManager)
     {
         _setings = settings;
         _audioManager = audioManager;
-        // _currencyPopupPool = currencyPopupPool;
     }
 
     public void Initialize()
@@ -37,8 +31,8 @@ public class GameManager : IInitializable
 
     public void PerformClick(Vector2 clickPosition)
     {
-        if (_energy.Value < _setings.energyPerClick) return;
-        // _signalBus.Fire(new TapButtonSignal());
+        if (_energy.Value < _setings.energyPerClick) 
+            return;
         _energy.Value -= _setings.energyPerClick;
         _currency.Value += _setings.currencyPerClick;
 
